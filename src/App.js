@@ -1,14 +1,49 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import palette from './theme/palette';
-import Home from './modules/home';
 
-function App() {
+import AppHeader from './modules/common/AppHeader';
+import Home from './modules/home';
+import AddPatientDetails from './modules/patient/addDetails';
+import Billing from './modules/billing';
+import StoreRegistry from './modules/common/storeRegistry';
+import { Provider } from 'mobx-react';
+import CreateStores from './createStores';
+
+const styles = {
+  appWrapper: {
+    padding: '10px 20px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  }
+};
+
+function App({ classes }) {
   const theme = createMuiTheme({ palette });
+  new CreateStores().init();
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <div className={classes.appWrapper}>
+        <Router>
+          <Provider {...StoreRegistry.getStores()}>
+            <AppHeader />
+            <Switch>
+              <Route path="/addpatient">
+                <AddPatientDetails />
+              </Route>
+              <Route path="/billing">
+                <Billing />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </Provider>
+        </Router>
+      </div>
     </ThemeProvider>
   );
 }
 
-export default App;
+export default withStyles(styles)(App);

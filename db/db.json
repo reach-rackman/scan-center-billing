@@ -1,0 +1,416 @@
+{
+  "medical_billing_master": [
+    {
+      "id": "CT",
+      "medicalBilling": "CT BRAIN",
+      "scanAmount": 500,
+      "maxDiscAmt": 100,
+      "modality": "CT"
+    },
+    {
+      "id": "MRI",
+      "medicalBilling": "MRI BRAIN",
+      "scanAmount": 1000,
+      "maxDiscAmt": 300,
+      "modality": "MRI"
+    },
+    {
+      "id": "LAB",
+      "medicalBilling": "GLUCOSE FASTING",
+      "scanAmount": 750,
+      "maxDiscPrct": 10,
+      "modality": "LAB"
+    }
+  ],
+  "modality_slot_details": [
+    {
+      "modality": "CT",
+      "noOfSlots": 7
+    },
+    {
+      "modality": "MRI",
+      "noOfSlots": 6
+    },
+    {
+      "modality": "LAB",
+      "noOfSlots": -1
+    }
+  ],
+  "patient_details": [
+    {
+      "id": 24.389632656198934,
+      "salutation": "Mr.",
+      "patientName": "MIchael",
+      "gender": null,
+      "dob": null,
+      "age": null,
+      "ageType": "Years",
+      "phoneNumber": null,
+      "appointmentDate": null,
+      "address": {
+        "street": "",
+        "locality": "",
+        "city": "",
+        "state": "",
+        "pincode": 0,
+        "country": ""
+      }
+    },
+    {
+      "id": 72.77461944816166,
+      "salutation": "Mr.",
+      "patientName": "Michael Rackmann",
+      "gender": "male",
+      "dob": "Thu May 11 1995",
+      "age": 25,
+      "ageType": "Years",
+      "phoneNumber": 9094584238,
+      "appointmentDate": "Wed May 05 2021",
+      "address": {
+        "street": "Grace GArden ",
+        "locality": "Royapuram",
+        "city": "Chennai",
+        "state": "Tamilnadu",
+        "pincode": 600013,
+        "country": "India"
+      },
+      "updatePending": true,
+      "updateError": false
+    },
+    {
+      "id": 68.31941701567045,
+      "salutation": "Mr.",
+      "patientName": "",
+      "gender": null,
+      "dob": null,
+      "age": null,
+      "ageType": "Years",
+      "phoneNumber": null,
+      "appointmentDate": null,
+      "address": {
+        "street": "",
+        "locality": "",
+        "city": "",
+        "state": "",
+        "pincode": 0,
+        "country": ""
+      },
+      "updatePending": true,
+      "updateError": false
+    },
+    {
+      "id": 74.67001055039502,
+      "salutation": "Mr.",
+      "patientName": "",
+      "gender": null,
+      "dob": null,
+      "age": null,
+      "ageType": "Years",
+      "phoneNumber": null,
+      "appointmentDate": null,
+      "address": {
+        "street": "",
+        "locality": "",
+        "city": "",
+        "state": "",
+        "pincode": 0,
+        "country": ""
+      },
+      "selectedScans": [
+        {
+          "id": "MRI",
+          "medicalBilling": "MRI BRAIN",
+          "scanAmount": 1000,
+          "maxDiscAmt": 300,
+          "maxDiscPrct": 0,
+          "modality": "MRI",
+          "appliedDiscAmt": 16,
+          "appliedDiscPrct": 0
+        },
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 80,
+          "appliedDiscPrct": 0
+        }
+      ],
+      "updatePending": true,
+      "updateError": false
+    },
+    {
+      "id": 6.6032034906608805,
+      "salutation": "Mr.",
+      "patientName": "Rackman",
+      "gender": "male",
+      "dob": "Wed May 04 2011",
+      "age": 9,
+      "ageType": "Years",
+      "phoneNumber": 9094584238,
+      "appointmentDate": "Thu May 13 2021",
+      "address": {
+        "street": "Grace Garden",
+        "locality": "Royapuram",
+        "city": "Chennai",
+        "state": "Tamilnadu",
+        "pincode": 600013,
+        "country": "India"
+      },
+      "selectedScans": [
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 50,
+          "appliedDiscPrct": 0
+        },
+        {
+          "id": "MRI",
+          "medicalBilling": "MRI BRAIN",
+          "scanAmount": 1000,
+          "maxDiscAmt": 300,
+          "maxDiscPrct": 0,
+          "modality": "MRI",
+          "appliedDiscAmt": 250,
+          "appliedDiscPrct": 0
+        },
+        {
+          "id": "LAB",
+          "medicalBilling": "GLUCOSE FASTING",
+          "scanAmount": 750,
+          "maxDiscAmt": 0,
+          "maxDiscPrct": 10,
+          "modality": "LAB",
+          "appliedDiscAmt": 5,
+          "appliedDiscPrct": 0
+        }
+      ],
+      "updatePending": false,
+      "updateError": false
+    },
+    {
+      "id": 73.30432957679349,
+      "salutation": "Mr.",
+      "patientName": "",
+      "gender": null,
+      "dob": null,
+      "age": null,
+      "ageType": "Years",
+      "phoneNumber": null,
+      "appointmentDate": null,
+      "address": {
+        "street": "",
+        "locality": "",
+        "city": "",
+        "state": "",
+        "pincode": 0,
+        "country": ""
+      },
+      "selectedScans": [
+        {
+          "id": "LAB",
+          "medicalBilling": "GLUCOSE FASTING",
+          "scanAmount": 750,
+          "maxDiscAmt": 0,
+          "maxDiscPrct": 10,
+          "modality": "LAB",
+          "appliedDiscAmt": 0,
+          "appliedDiscPrct": 2
+        },
+        {
+          "id": "LAB",
+          "medicalBilling": "GLUCOSE FASTING",
+          "scanAmount": 750,
+          "maxDiscAmt": 0,
+          "maxDiscPrct": 10,
+          "modality": "LAB",
+          "appliedDiscAmt": 0,
+          "appliedDiscPrct": 9
+        }
+      ],
+      "updatePending": false,
+      "updateError": false
+    },
+    {
+      "id": 42.538857801358375,
+      "salutation": "Mr.",
+      "patientName": "",
+      "gender": null,
+      "dob": null,
+      "age": null,
+      "ageType": "Years",
+      "phoneNumber": null,
+      "appointmentDate": null,
+      "address": {
+        "street": "",
+        "locality": "",
+        "city": "",
+        "state": "",
+        "pincode": 0,
+        "country": ""
+      },
+      "selectedScans": [
+        {
+          "id": "LAB",
+          "medicalBilling": "GLUCOSE FASTING",
+          "scanAmount": 750,
+          "maxDiscAmt": 0,
+          "maxDiscPrct": 10,
+          "modality": "LAB",
+          "appliedDiscAmt": 0,
+          "appliedDiscPrct": 4,
+          "totalAmount": 720
+        },
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 400,
+          "appliedDiscPrct": 0,
+          "totalAmount": 100
+        }
+      ],
+      "updatePending": false,
+      "updateError": false
+    },
+    {
+      "id": 26.13560046115242,
+      "salutation": "Mr.",
+      "patientName": "",
+      "gender": null,
+      "dob": null,
+      "age": null,
+      "ageType": "Years",
+      "phoneNumber": null,
+      "appointmentDate": null,
+      "address": {
+        "street": "",
+        "locality": "",
+        "city": "",
+        "state": "",
+        "pincode": 0,
+        "country": ""
+      },
+      "selectedScans": [
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 26,
+          "appliedDiscPrct": 0,
+          "totalAmount": 474
+        },
+        {
+          "id": "MRI",
+          "medicalBilling": "MRI BRAIN",
+          "scanAmount": 1000,
+          "maxDiscAmt": 300,
+          "maxDiscPrct": 0,
+          "modality": "MRI",
+          "appliedDiscAmt": 200,
+          "appliedDiscPrct": 0,
+          "totalAmount": 800
+        },
+        {
+          "id": "LAB",
+          "medicalBilling": "GLUCOSE FASTING",
+          "scanAmount": 750,
+          "maxDiscAmt": 0,
+          "maxDiscPrct": 10,
+          "modality": "LAB",
+          "appliedDiscAmt": 0,
+          "appliedDiscPrct": 8,
+          "totalAmount": 690
+        }
+      ],
+      "updatePending": false,
+      "updateError": false,
+      "totalAmount": 1964
+    },
+    {
+      "id": 72.1329344758866,
+      "salutation": "Mr.",
+      "patientName": "",
+      "gender": null,
+      "dob": null,
+      "age": null,
+      "ageType": "Years",
+      "phoneNumber": null,
+      "appointmentDate": null,
+      "address": {
+        "street": "",
+        "locality": "",
+        "city": "",
+        "state": "",
+        "pincode": 0,
+        "country": ""
+      },
+      "selectedScans": [
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 0,
+          "appliedDiscPrct": 0,
+          "totalAmount": 500
+        }
+      ],
+      "updatePending": false,
+      "updateError": false,
+      "totalAmount": 500
+    },
+    {
+      "id": 15.34803355873764,
+      "salutation": "Mr.",
+      "patientName": "",
+      "gender": null,
+      "dob": null,
+      "age": null,
+      "ageType": "Years",
+      "phoneNumber": null,
+      "appointmentDate": null,
+      "address": {
+        "street": "",
+        "locality": "",
+        "city": "",
+        "state": "",
+        "pincode": 0,
+        "country": ""
+      },
+      "selectedScans": [
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 0,
+          "appliedDiscPrct": 0,
+          "totalAmount": 500
+        }
+      ],
+      "updatePending": false,
+      "updateError": false,
+      "updateComplete": false,
+      "totalAmount": 500
+    }
+  ],
+  "payment_details": [],
+  "billing_transactions": []
+}

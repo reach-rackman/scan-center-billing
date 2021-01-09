@@ -1,20 +1,33 @@
-import { Button, Typography } from '@material-ui/core';
-import './home.css';
+import { Button, Typography, withStyles } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import PageHeader from '../common/PageHeader';
+import * as constants from '../common/constants';
 
-function Home() {
+const styles = () => ({
+    homeWrapper: {
+        width: '100%'
+    },
+    actionsWrapper: {
+        width: '100%',
+        marginTop: 30,
+        display: 'flex',
+        justifyContent: 'space-evenly'
+    }
+});
+
+function Home({ classes }) {
+    const history = useHistory();
     const handleAddPatient = () => {
-        alert('Patient Added!');
+        history.push(constants.ADD_PATIENT);
     };
 
     const handleBilling = () => {
-        alert('Billing details')
+        history.push(constants.BILLING);
     }
     return (
-        <div className="app">
-            <header className="app-header">
-                <Typography variant="h5" color="primary">Athena Scan's</Typography>
-            </header>
-            <div className="app-actions">
+        <div className={classes.homeWrapper}>
+            <PageHeader pageName="Home"/>
+            <div className={classes.actionsWrapper}>
                 <Button variant="contained" color="primary" onClick={handleAddPatient}>
                     <Typography variant="body2" color="secondary">Add Patient</Typography>
                 </Button>
@@ -26,4 +39,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default withStyles(styles)(Home);
