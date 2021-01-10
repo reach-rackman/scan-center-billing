@@ -5,10 +5,11 @@ import palette from './theme/palette';
 import AppHeader from './modules/common/AppHeader';
 import Home from './modules/home';
 import AddPatientDetails from './modules/patient/addDetails';
-import Billing from './modules/billing';
+import ViewAppointments from './modules/appointments/view';
 import StoreRegistry from './modules/common/storeRegistry';
 import { Provider } from 'mobx-react';
 import CreateStores from './createStores';
+import Payment from './modules/payment';
 
 const styles = {
   appWrapper: {
@@ -32,8 +33,11 @@ function App({ classes }) {
               <Route path="/addpatient">
                 <AddPatientDetails />
               </Route>
-              <Route path="/billing">
-                <Billing />
+              <Route path="/patients/:patientId/payment">
+                <Payment />
+              </Route>
+              <Route path="/patients">
+                <ViewAppointments />
               </Route>
               <Route path="/">
                 <Home />

@@ -2,10 +2,6 @@ import { withStyles } from '@material-ui/core';
 import PageHeader from '../../common/PageHeader';
 import MedicalScanDetails from './medicalScanDetails';
 import PatientForm from './patientForm';
-import PatientDetails from './model/PatientDetails';
-import StoreRegistry from '../../common/storeRegistry';
-import * as constants from '../../common/constants';
-import ScanList from '../../common/models/MedicalBillingMaster';
 
 const styles = () => ({
     wrapper: {

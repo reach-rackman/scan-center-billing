@@ -21,8 +21,8 @@ function Home({ classes }) {
         history.push(constants.ADD_PATIENT);
     };
 
-    const handleBilling = () => {
-        history.push(constants.BILLING);
+    const handleViewAppointments = () => {
+        history.push(constants.VIEW_APPOINTMENTS);
     }
     return (
         <div className={classes.homeWrapper}>
@@ -31,8 +31,8 @@ function Home({ classes }) {
                 <Button variant="contained" color="primary" onClick={handleAddPatient}>
                     <Typography variant="body2" color="secondary">Add Patient</Typography>
                 </Button>
-                <Button variant="contained" color="primary" onClick={handleBilling}>
-                    <Typography variant="body2" color="secondary">Billing</Typography>
+                <Button variant="contained" color="primary" onClick={handleViewAppointments}>
+                    <Typography variant="body2" color="secondary">View Appointments</Typography>
                 </Button>
             </div>
         </div>

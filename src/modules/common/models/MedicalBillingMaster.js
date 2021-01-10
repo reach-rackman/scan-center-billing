@@ -10,7 +10,6 @@ export const MedicalBilling = types.model('MedicalBilling', {
     maxDiscPrct: types.optional(types.number, 0),
     modality: types.string,
     appliedDiscAmt: types.optional(types.number, 0),
-    appliedDiscPrct: types.optional(types.number, 0),
     totalAmount: types.optional(types.number, 0)
 }).views((self) => ({
     get discountAmountForPrct() {

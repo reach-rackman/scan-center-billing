@@ -78,7 +78,6 @@ const styles = () => ({
 });
 
 function PatientForm({ classes, patientDetails }) {
-    const handleChange = () => { };
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <form name="patientDetailsForm">
@@ -108,8 +107,8 @@ function PatientForm({ classes, patientDetails }) {
                     onChange={e => patientDetails.onChange('gender', e.target.value)}
                     className={classes.genderRadio}
                 >
-                    <FormControlLabel value="male" control={<Radio color="primary" />} label="Male" />
-                    <FormControlLabel value="female" control={<Radio color="primary" />} label="Female" />
+                    <FormControlLabel value="Male" control={<Radio color="primary" />} label="Male" />
+                    <FormControlLabel value="Female" control={<Radio color="primary" />} label="Female" />
                 </RadioGroup>
             </FormControl>
             <FormControl variant="outlined" className={classes.formControl}>

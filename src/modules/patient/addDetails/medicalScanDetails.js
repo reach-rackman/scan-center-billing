@@ -66,13 +66,17 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
     const history = useHistory();
     const [selectedScan, setSelectedScan] = useState({});
     const [discount, setDiscount] = useState(0);
+
     useEffect(() => {
-        scanList.fetch();
-    }, []);
+        if (scanList) {
+            scanList.fetch();
+        }
+    }, [scanList]);
 
     useEffect(() => {
         if (patientDetails.updateComplete) {
-            history.push('/');
+            history && history.push('/');
+            patientDetails.clear();
         }
     }, [patientDetails.updateComplete])
 
@@ -93,8 +97,8 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
             scanItem.totalAmount = scanItem.scanAmount - scanItem.appliedDiscAmt;
         } else if (scanItem.maxDiscPrct) {
             // Percentage disc
-            scanItem.appliedDiscPrct = discount;
-            scanItem.totalAmount = scanItem.scanAmount - (scanItem.scanAmount * scanItem.appliedDiscPrct/100);
+            scanItem.appliedDiscAmt = (scanItem.scanAmount * discount/100);
+            scanItem.totalAmount = scanItem.scanAmount - scanItem.appliedDiscAmt;
         }
         patientDetails.addScanItem(scanItem);
     }
@@ -124,7 +128,9 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
                     <FormLabel className="fieldName" color="primary">
                         <Typography variant="h6" color="primary">{selectedScan.scanAmount}</Typography>
                     </FormLabel>
-                    <FormLabel className="fieldName">Discount</FormLabel>
+                    <FormLabel className="fieldName">
+                        Discount {selectedScan.maxDiscPrct ? '(%)' : '(INR)'}
+                    </FormLabel>
                     <TextField
                         id="discount"
                         type="number"
@@ -159,13 +165,7 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
                             <TableCell>{index + 1}</TableCell>
                             <TableCell>{scan.medicalBilling}</TableCell>
                             <TableCell>{scan.scanAmount} INR</TableCell>
-                            <TableCell>
-                                {scan.maxDiscAmt ? (
-                                    `${scan.appliedDiscAmt} INR`
-                                ) : (
-                                    `${scan.appliedDiscPrct}% (${scan.discountAmountForPrct} INR)`
-                                )}
-                            </TableCell>
+                            <TableCell>{scan.appliedDiscAmt} INR</TableCell>
                             <TableCell>{scan.totalAmount}</TableCell>
                         </TableRow>
                     ))}
