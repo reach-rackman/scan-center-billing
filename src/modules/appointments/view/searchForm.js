@@ -15,6 +15,7 @@ const styles = () => ({
         display: 'flex',
         flexDirection: 'row',
         margin: '10px 0',
+        justifyContent: 'center',
         '& .fieldName': {
             marginRight: 10,
             display: 'flex',
@@ -69,11 +70,13 @@ function SearchForm({ classes }) {
                         />
                     </FormControl>
                 </MuiPickersUtilsProvider>
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    size="small"
-                >Search</Button>
+                <FormControl className={classes.formControl}>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        size="small"
+                    >Search</Button>
+                </FormControl>
             </form>
         </div>
     );

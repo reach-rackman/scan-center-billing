@@ -21,10 +21,15 @@ const styles = (theme) => ({
     wrapper: {
         width: '100%'
     },
+    form: {
+        display: 'flex',
+        margin: '10px 0',
+        flexDirection: 'row'
+    },
     formControl: {
         display: 'flex',
         flexDirection: 'row',
-        margin: '10px 0',
+        alignItems: 'center',
         '& > *': {
             margin: '0 5px'
         },
@@ -44,7 +49,7 @@ const styles = (theme) => ({
         },
     },
     autocomplete: {
-        minWidth: 200
+        width: '15vw'
     },
     table: {
         marginTop: 30
@@ -106,8 +111,8 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
     return (
         <div className={classes.wrapper}>
             <PageHeader pageName="Medical Scan Details" />
-            <form name="scanDetailsForm">
-                <FormControl variant="outlined" className={`${classes.formControl} ${classes.scanForm}`}>
+            <form name="scanDetailsForm" className={`${classes.form}  ${classes.scanForm}`}>
+                <FormControl variant="outlined" className={classes.formControl}>
                     <FormLabel className="fieldName">Scan List</FormLabel>
                     <Autocomplete
                         options={scanList.items}
@@ -124,10 +129,14 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
                             />
                         )}
                     />
+                </FormControl>
+                <FormControl className={classes.formControl}>
                     <FormLabel className="fieldName">Scan Amount</FormLabel>
                     <FormLabel className="fieldName" color="primary">
                         <Typography variant="h6" color="primary">{selectedScan.scanAmount}</Typography>
                     </FormLabel>
+                </FormControl>
+                <FormControl className={classes.formControl}>
                     <FormLabel className="fieldName">
                         Discount {selectedScan.maxDiscPrct ? '(%)' : '(INR)'}
                     </FormLabel>
@@ -142,6 +151,8 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
                             max: selectedScan.maxDiscAmt || selectedScan.maxDiscPrct || 0
                         }}
                     />
+                </FormControl>
+                <FormControl className={classes.formControl}>
                     <Button
                         variant="outlined"
                         color="primary"

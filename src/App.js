@@ -1,6 +1,7 @@
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import palette from './theme/palette';
+import overrides from './theme/overrides';
 
 import AppHeader from './modules/common/AppHeader';
 import Home from './modules/home';
@@ -21,7 +22,7 @@ const styles = {
 };
 
 function App({ classes }) {
-  const theme = createMuiTheme({ palette });
+  const theme = createMuiTheme({ palette, overrides });
   new CreateStores().init();
   return (
     <ThemeProvider theme={theme}>
