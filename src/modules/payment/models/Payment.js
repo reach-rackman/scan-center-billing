@@ -8,7 +8,8 @@ const Payment = types.model('Payment', {
     paymentDate: types.string,
     paidAmount: types.number,
     mode: types.string,
-    saveInProgress: types.optional(types.boolean, false)
+    saveInProgress: types.optional(types.boolean, false),
+    paymentSuccessful: types.optional(types.boolean, false)
 }).actions((self) => ({
     set(data) {
         applySnapshot(self, {...self, ...data});
@@ -20,12 +21,12 @@ const Payment = types.model('Payment', {
     },
     makePayment(patientId) {
         const payload = {...self};
-        applySnapshot(self, { ...self, saveInProgress: true });
+        applySnapshot(self, { ...self, saveInProgress: true, paymentSuccessful: false });
         payload.id = uuid();
         payload.patientId = patientId;
         payload.paymentDate = new Date().toDateString();
         new PaymentsService().makePayment(payload).then(response => {
-            applySnapshot(self, { ...self, saveInProgress: false });
+            applySnapshot(self, { ...self, saveInProgress: false, paymentSuccessful: true });
         });
     }
 }));

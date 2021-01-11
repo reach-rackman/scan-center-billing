@@ -102,7 +102,7 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
             scanItem.totalAmount = scanItem.scanAmount - scanItem.appliedDiscAmt;
         } else if (scanItem.maxDiscPrct) {
             // Percentage disc
-            scanItem.appliedDiscAmt = (scanItem.scanAmount * discount/100);
+            scanItem.appliedDiscAmt = Math.round(scanItem.scanAmount * discount/100);
             scanItem.totalAmount = scanItem.scanAmount - scanItem.appliedDiscAmt;
         }
         patientDetails.addScanItem(scanItem);

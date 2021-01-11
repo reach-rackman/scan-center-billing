@@ -1,4 +1,5 @@
 import DateFnsUtils from "@date-io/date-fns";
+import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
     Button,
@@ -58,12 +59,44 @@ const styles = () => ({
     }
 })
 
-function PaymentDetails({ classes, payment, payments, patientId }) {
+function PaymentDetails({ classes, payment, payments, patient, patientDetails }) {
+    const history = useHistory();
+    const [isFinal, setFinal] = useState(false);
+    const [balanceAmt, setBalanceAmt] = useState(0);
+    const [payableAmt, setPayableAmt] = useState(0);
+
     useEffect(() => {
-        if (patientId) {
-            payments.fetch(patientId);
+        if (patient.id) {
+            payments.fetch(patient.id);
         }
-    }, [patientId]);
+        setFinal(payments.items.length >= 2);
+        setPayableAmt(patient.totalAmount - payments.amountPaid)
+        setBalanceAmt(patient.totalAmount - payments.amountPaid)
+    }, [payments.filterId, patient]);
+
+    useEffect(() => {
+        if (payment.paymentSuccessful && patient.id) {
+            payments.fetch(patient.id);
+        }
+    }, [payment.paymentSuccessful]);
+    
+    useEffect(() => {
+        if (payment.paymentSuccessful && payments.items.length) {
+            if (payments.amountPaid && patient.totalAmount) {
+                if (payments.amountPaid === patient.totalAmount) {
+                    patientDetails.updatePaymentStatus(patient.id, constants.BILL_STATUS.FULLY_PAID.id);
+                    history.push('/patients')
+                } else {
+                    patientDetails.updatePaymentStatus(patient.id, constants.BILL_STATUS.DUE_BILLED.id);
+                }
+            }
+        }
+    }, [payment.paymentSuccessful, payments.items]);
+
+    const handlePayment = () => {
+        payment.set({paidAmount: parseInt(payableAmt)});
+        payment.makePayment(patient.id);
+    }
 
     return (
         <div className={classes.wrapper}>
@@ -75,10 +108,12 @@ function PaymentDetails({ classes, payment, payments, patientId }) {
                         type="number"
                         inputProps={{
                             size: 10,
-                            min: 50
+                            min: 50,
+                            max: balanceAmt
                         }}
-                        value={payment.paidAmount}
-                        onChange={e => payment.onChange('paidAmount', parseInt(e.target.value))}
+                        disabled={isFinal}
+                        value={payableAmt}
+                        onChange={e => setPayableAmt(e.target.value)}
                     />
                 </FormControl>
                 <FormControl className={classes.formControl}>
@@ -147,7 +182,7 @@ function PaymentDetails({ classes, payment, payments, patientId }) {
                     variant="outlined"
                     color="primary"
                     disabled={payment.saveInProgress}
-                    onClick={() => payment.makePayment(patientId)}
+                    onClick={handlePayment}
                 >Save</Button>
             </form>
         </div>
@@ -156,5 +191,6 @@ function PaymentDetails({ classes, payment, payments, patientId }) {
 
 export default withStyles(styles)(inject(
     'payment',
-    'payments'
+    'payments',
+    'patientDetails'
 )(observer(PaymentDetails)));

@@ -21,13 +21,13 @@ const styles = (theme) => ({
     }
 });
 
-function PreviousTransactions({ classes, payments, patientId }) {
+function PreviousTransactions({ classes, payments, patient }) {
 
     useEffect(() => {
-        if (patientId) {
-            payments.fetch(patientId);
+        if (patient.id) {
+            payments.fetch(patient.id);
         }
-    }, [patientId]);
+    }, [patient]);
 
     return (
         <div className={classes.wrapper}>
@@ -49,6 +49,11 @@ function PreviousTransactions({ classes, payments, patientId }) {
                             <TableCell>{item.mode}</TableCell>
                         </TableRow>
                     ))}
+                    {!payments.items.length && (
+                        <TableRow>
+                            <TableCell colSpan="6">No payments so far</TableCell>
+                        </TableRow>
+                    )}
                 </TableBody>
             </Table>
 

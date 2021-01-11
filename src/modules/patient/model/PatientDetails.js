@@ -3,6 +3,7 @@ import { applySnapshot, types } from 'mobx-state-tree';
 import { differenceInYears, differenceInMonths } from 'date-fns';
 import * as constants from '../../common/constants';
 import AddPatientService from '../addDetails/service/addPatientService';
+import PatientService from '../services/PatientService';
 import { MedicalBilling } from '../../common/models/MedicalBillingMaster';
 
 export const initialState = {
@@ -16,7 +17,8 @@ export const initialState = {
         state: '',
         pincode: 0,
         country: ''
-    }
+    },
+    paymentStatus: constants.BILL_STATUS.NOT_YET_STARTED.id
 };
 
 const Address = types.model('Address', {
@@ -39,12 +41,13 @@ const PatientDetails = types.model('PatientDetails', {
     salutation: types.string,
     patientName: types.maybeNull(types.string),
     gender: types.maybeNull(types.string),
-    dob: types.maybeNull(types.string),
+    dob: types.maybeNull(types.number),
     age: types.maybeNull(types.number),
     ageType: types.maybeNull(types.string),
     phoneNumber: types.maybeNull(types.number),
-    appointmentDate: types.maybeNull(types.string),
+    appointmentDate: types.maybeNull(types.number),
     address: types.maybe(Address),
+    paymentStatus: types.string,
     selectedScans: types.optional(types.array(MedicalBilling), []),
     totalAmount: types.optional(types.number, 0),
     totalDiscount: types.optional(types.number, 0),
@@ -69,7 +72,7 @@ const PatientDetails = types.model('PatientDetails', {
         applySnapshot(self, data);
     },
     set(data) {
-        applySnapshot(self, data);
+        applySnapshot(self, {...self, ...data});
     },
     clear() {
         applySnapshot(self, initialState);
@@ -103,6 +106,16 @@ const PatientDetails = types.model('PatientDetails', {
         const selectedScans = [...self.selectedScans];
         selectedScans.push(scanItem);
         this.set({...self, selectedScans});
+    },
+    updatePaymentStatus(patientId, status) {
+        const patientService = new PatientService();
+        patientService.updatePaymentStatus(patientId, { paymentStatus: status });
+    },
+    update() {
+        const payload = {...self};
+        delete payload.updateComplete;
+        delete payload.updateError;
+        delete payload.updatePending;
     }
 }));
 

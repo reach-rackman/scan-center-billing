@@ -122,7 +122,7 @@ function PatientForm({ classes, patientDetails }) {
                     label="Date of Birth"
                     views={["year", "month", "date"]}
                     value={patientDetails.dob}
-                    onChange={date => patientDetails.onChange('dob', date.toDateString())}
+                    onChange={date => patientDetails.onChange('dob', date.getTime())}
                     className={classes.datepicker}
                 />
 
@@ -154,7 +154,7 @@ function PatientForm({ classes, patientDetails }) {
                     label="Appointment Date"
                     views={["year", "month", "date"]}
                     value={patientDetails.appointmentDate}
-                    onChange={date => patientDetails.onChange('appointmentDate', date.toDateString())}
+                    onChange={date => patientDetails.onChange('appointmentDate', date.getTime())}
                     className={classes.datepicker}
                 />
 

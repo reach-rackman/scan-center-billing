@@ -8,11 +8,17 @@ const Patients = types.model('Patients', {
     set(data) {
         applySnapshot(self, {...self, ...data});
     },
-    fetch() {
+    fetch(searchCriteria) {
         const patientService = new PatientService();
-        patientService.getAll().then((response) => {
-            this.set({ items: response.data });
-        });
+        if (searchCriteria) {
+            patientService.search(searchCriteria).then((response) => {
+                this.set({ items: response.data });
+            });
+        } else {
+            patientService.getAll().then((response) => {
+                this.set({ items: response.data });
+            });
+        }
     },
     getPatient(patientId) {
         const patientService = new PatientService();

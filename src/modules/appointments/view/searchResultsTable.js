@@ -1,7 +1,8 @@
-import { Table, TableHead, TableBody, TableCell, TableRow, withStyles } from "@material-ui/core";
+import { Table, TableHead, TableBody, TableCell, TableRow, withStyles, Typography } from "@material-ui/core";
 import { useEffect } from "react";
 import { inject, observer } from 'mobx-react';
 import { Link } from "react-router-dom";
+import * as constants from '../../common/constants';
 
 const styles = (theme) => ({
     table: {
@@ -15,13 +16,7 @@ const styles = (theme) => ({
     },
 });
 
-function SearchResultsTable({ classes, patients }) {
-    useEffect(() => {
-        if (patients) {
-            patients.fetch();
-        }
-    }, [patients]);
-
+function SearchResultsTable({ classes, appointments }) {
     return (
         <Table className={classes.table}>
             <TableHead className={classes.tableHead}>
@@ -35,21 +30,31 @@ function SearchResultsTable({ classes, patients }) {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {patients.items.map((patient, index) => (
+                {appointments.map((patient, index) => (
                     <TableRow>
                         <TableCell>{index + 1}</TableCell>
                         <TableCell>{`${patient.salutation} ${patient.patientName}`}</TableCell>
                         <TableCell>{patient.age}-{patient.gender}</TableCell>
-                        <TableCell>{patient.appointmentDate}</TableCell>
+                        <TableCell>{new Date(patient.appointmentDate).toDateString()}</TableCell>
                         <TableCell>{patient.totalAmount}</TableCell>
-                        <TableCell><Link to={`/patients/${patient.id}/payment`}>Click to Pay</Link></TableCell>
+                        <TableCell>
+                            {patient.paymentStatus === constants.BILL_STATUS.FULLY_PAID.id && (
+                                <Typography>{constants.BILL_STATUS.FULLY_PAID.value}</Typography>
+                            )}
+                            {patient.paymentStatus !== constants.BILL_STATUS.FULLY_PAID.id && (
+                                <Link to={`/patients/${patient.id}/payment`}>Click to Pay</Link>
+                            )}
+                        </TableCell>
                     </TableRow>
                 ))}
+                {!appointments.length && (
+                    <TableRow>
+                        <TableCell colSpan="6">No records to show</TableCell>
+                    </TableRow>
+                )}
             </TableBody>
         </Table>
     );
 }
 
-export default withStyles(styles)(inject(
-    'patients'
-)(observer(SearchResultsTable)));
+export default withStyles(styles)(observer(SearchResultsTable));

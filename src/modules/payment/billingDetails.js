@@ -1,6 +1,6 @@
 import { Table, TableBody, TableCell, TableRow, Typography, withStyles } from "@material-ui/core"
 import { inject, observer } from "mobx-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const styles = () => ({
     wrapper: {
@@ -15,20 +15,11 @@ const styles = () => ({
 });
 
 function BillingDetails({ classes, patient, payments }) {
-    const [amountPaid, setAmountPaid] = useState(0);
     useEffect(() => {
-        if (patient && patient.id) {
+        if (patient.id) {
             payments.fetch(patient.id);
         }
     }, [patient]);
-
-    useEffect(() => {
-        if (payments.items.length) {
-            let total = 0;
-            payments.items.forEach(item => total = total + item.paidAmount);
-            setAmountPaid(total);
-        }
-    }, [payments.items]);
 
     return (
         <div className={classes.wrapper}>
@@ -57,11 +48,11 @@ function BillingDetails({ classes, patient, payments }) {
                     </TableRow>
                     <TableRow>
                         <TableCell>Amount Paid</TableCell>
-                        <TableCell>{amountPaid}</TableCell>
+                        <TableCell>{payments.amountPaid}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell>Balance</TableCell>
-                        <TableCell>{patient?.totalAmount - amountPaid}</TableCell>
+                        <TableCell>{(patient.totalAmount - payments.amountPaid) | 0}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

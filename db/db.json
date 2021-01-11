@@ -42,11 +42,11 @@
       "salutation": "Mr.",
       "patientName": "Michael Rackmann",
       "gender": "Male",
-      "dob": "Wed May 02 2018",
+      "dob": 1525199400000,
       "age": 2,
       "ageType": "Years",
       "phoneNumber": 9094584238,
-      "appointmentDate": "Sun Jan 10 2021",
+      "appointmentDate": 1610217000000,
       "address": {
         "street": "Grace Garden",
         "locality": "Royapura",
@@ -55,6 +55,7 @@
         "pincode": 600013,
         "country": "India"
       },
+      "paymentStatus": "fullyPaid",
       "selectedScans": [
         {
           "id": "LAB",
@@ -94,11 +95,11 @@
       "salutation": "Mr.",
       "patientName": "Michael Rackmann",
       "gender": "Male",
-      "dob": "Wed Feb 04 2009",
+      "dob": 1233685800000,
       "age": 11,
       "ageType": "Years",
       "phoneNumber": 9094584238,
-      "appointmentDate": "Mon Jan 11 2021",
+      "appointmentDate": 1610303400000,
       "address": {
         "street": "2 # 2ND STREET EAST KKKUPPAM ENNORE",
         "locality": "Royapuram",
@@ -107,6 +108,7 @@
         "pincode": 600057,
         "country": "India"
       },
+      "paymentStatus": "fullyPaid",
       "selectedScans": [
         {
           "id": "CT",
@@ -127,11 +129,11 @@
       "salutation": "Mrs.",
       "patientName": "ksdjddjfqweqqweqwe",
       "gender": "Female",
-      "dob": "Wed Feb 04 2004",
+      "dob": 1075833000000,
       "age": 16,
       "ageType": "Years",
       "phoneNumber": 90956565,
-      "appointmentDate": "Tue May 03 2022",
+      "appointmentDate": 1651516200000,
       "address": {
         "street": "8 # 2ND STREET WEST KKKUPPAM  ENNORE",
         "locality": "Thcdfdf",
@@ -140,6 +142,7 @@
         "pincode": 600057,
         "country": "India"
       },
+      "paymentStatus": "fullyPaid",
       "selectedScans": [
         {
           "id": "MRI",
@@ -170,11 +173,11 @@
       "salutation": "Mrs.",
       "patientName": "Mike",
       "gender": "Female",
-      "dob": "Wed Feb 07 2018",
+      "dob": 1517941800000,
       "age": 2,
       "ageType": "Years",
       "phoneNumber": 9094584238,
-      "appointmentDate": "Wed Feb 03 2021",
+      "appointmentDate": 1612290600000,
       "address": {
         "street": "27 = 2ND STREET EAST KKKUPPAM ENNORE",
         "locality": "Royapuram",
@@ -183,6 +186,7 @@
         "pincode": 600057,
         "country": "India"
       },
+      "paymentStatus": "fullyPaid",
       "selectedScans": [
         {
           "id": "MRI",
@@ -201,62 +205,338 @@
           "maxDiscAmt": 0,
           "maxDiscPrct": 10,
           "modality": "LAB",
-          "appliedDiscAmt": 67.5,
-          "totalAmount": 682.5
+          "appliedDiscAmt": 67,
+          "totalAmount": 682
         }
       ],
-      "totalAmount": 1432.5,
-      "totalDiscount": 317.5
+      "totalAmount": 1432,
+      "totalDiscount": 317
+    },
+    {
+      "id": "ATH31832",
+      "salutation": "Mr.",
+      "patientName": "Rackmann",
+      "gender": "Male",
+      "dob": 737148720000,
+      "age": 27,
+      "ageType": "Years",
+      "phoneNumber": 9094584238,
+      "appointmentDate": 1612985520000,
+      "address": {
+        "street": "Grace GArden",
+        "locality": "Royapuram",
+        "city": "Chennai",
+        "state": "tamilnadu",
+        "pincode": 600013,
+        "country": "India"
+      },
+      "paymentStatus": "fullyPaid",
+      "selectedScans": [
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 37,
+          "totalAmount": 463
+        },
+        {
+          "id": "LAB",
+          "medicalBilling": "GLUCOSE FASTING",
+          "scanAmount": 750,
+          "maxDiscAmt": 0,
+          "maxDiscPrct": 10,
+          "modality": "LAB",
+          "appliedDiscAmt": 38,
+          "totalAmount": 712
+        }
+      ],
+      "totalAmount": 1175,
+      "totalDiscount": 75
+    },
+    {
+      "id": "ATH5177b",
+      "salutation": "Mr.",
+      "patientName": "asdf",
+      "gender": null,
+      "dob": 1517949960000,
+      "age": 2,
+      "ageType": "Years",
+      "phoneNumber": 9094584238,
+      "appointmentDate": 1620161160000,
+      "address": {
+        "street": "23  B # 2ND STREET EAST KKKUPPAM ENNORE",
+        "locality": "",
+        "city": "Chennai",
+        "state": "Tamil Nadu",
+        "pincode": 600057,
+        "country": "India"
+      },
+      "paymentStatus": "fullyPaid",
+      "selectedScans": [
+        {
+          "id": "MRI",
+          "medicalBilling": "MRI BRAIN",
+          "scanAmount": 1000,
+          "maxDiscAmt": 300,
+          "maxDiscPrct": 0,
+          "modality": "MRI",
+          "appliedDiscAmt": 0,
+          "totalAmount": 1000
+        }
+      ],
+      "totalAmount": 1000,
+      "totalDiscount": 0
+    },
+    {
+      "id": "ATH1b0e9",
+      "salutation": "Mr.",
+      "patientName": "Testin",
+      "gender": "Male",
+      "dob": 1304541960000,
+      "age": 9,
+      "ageType": "Years",
+      "phoneNumber": 9094584238,
+      "appointmentDate": null,
+      "address": {
+        "street": "6 UP # 2ND STREET EAST KKKUPPAM ENNORE",
+        "locality": "",
+        "city": "Chennai",
+        "state": "Tamil Nadu",
+        "pincode": 600057,
+        "country": "India"
+      },
+      "paymentStatus": "fullyPaid",
+      "selectedScans": [
+        {
+          "id": "MRI",
+          "medicalBilling": "MRI BRAIN",
+          "scanAmount": 1000,
+          "maxDiscAmt": 300,
+          "maxDiscPrct": 0,
+          "modality": "MRI",
+          "appliedDiscAmt": 0,
+          "totalAmount": 1000
+        }
+      ],
+      "totalAmount": 1000,
+      "totalDiscount": 0
+    },
+    {
+      "id": "ATHc7c5a",
+      "salutation": "Mr.",
+      "patientName": "Michael",
+      "gender": null,
+      "dob": 1525294020000,
+      "age": 2,
+      "ageType": "Years",
+      "phoneNumber": 9094584238,
+      "appointmentDate": 1628023620000,
+      "address": {
+        "street": "8 # 2ND STREET WEST KKKUPPAM  ENNORE",
+        "locality": "",
+        "city": "Thiruvallur",
+        "state": "Tamil Nadu",
+        "pincode": 600057,
+        "country": "India"
+      },
+      "paymentStatus": "dueBilled",
+      "selectedScans": [
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 0,
+          "totalAmount": 500
+        }
+      ],
+      "totalAmount": 500,
+      "totalDiscount": 0
+    },
+    {
+      "id": "ATH38492",
+      "salutation": "Mr.",
+      "patientName": "Michael",
+      "gender": null,
+      "dob": 1525207860000,
+      "age": 2,
+      "ageType": "Years",
+      "phoneNumber": 9094584238,
+      "appointmentDate": 1617569460000,
+      "address": {
+        "street": "8 # 2ND STREET WEST KKKUPPAM  ENNORE",
+        "locality": "",
+        "city": "Thiruvallur",
+        "state": "Tamil Nadu",
+        "pincode": 600057,
+        "country": "India"
+      },
+      "paymentStatus": "dueBilled",
+      "selectedScans": [
+        {
+          "id": "CT",
+          "medicalBilling": "CT BRAIN",
+          "scanAmount": 500,
+          "maxDiscAmt": 100,
+          "maxDiscPrct": 0,
+          "modality": "CT",
+          "appliedDiscAmt": 0,
+          "totalAmount": 500
+        }
+      ],
+      "totalAmount": 500,
+      "totalDiscount": 0
     }
   ],
   "payment_details": [
     {
-      "id": "261d23a2-7b90-41af-b4a9-e559c3fecc2d",
-      "patientId": "ATHc400a",
-      "paymentDate": "",
-      "paidAmount": 150,
-      "mode": "Cash",
-      "saveInProgress": false
-    },
-    {
-      "id": "dc4c6793-6655-4844-8044-31d1597ecde5",
-      "patientId": "ATHc400a",
-      "paymentDate": "",
-      "paidAmount": 150,
-      "mode": "Cash",
-      "saveInProgress": false
-    },
-    {
-      "id": "3546bdea-f3d4-4f1a-97e0-ef1ab21c95fc",
-      "patientId": "ATHc400a",
-      "paymentDate": "Mon Jan 11 2021",
-      "paidAmount": 4,
-      "mode": "Cash",
-      "saveInProgress": false
-    },
-    {
-      "id": "1a886437-0614-4c9c-a8df-cea5610be2c3",
-      "patientId": "ATHc400a",
-      "paymentDate": "Mon Jan 11 2021",
-      "paidAmount": 4,
-      "mode": "Cash",
-      "saveInProgress": false
-    },
-    {
-      "id": "29f2272b-8f72-4ce2-ac52-78d3a9c5d167",
+      "id": "f0cc6e73-1abc-4fe6-aa16-275650379876",
       "patientId": "ATHde20e",
       "paymentDate": "Mon Jan 11 2021",
-      "paidAmount": 190,
+      "paidAmount": 400,
       "mode": "Cash",
-      "saveInProgress": false
+      "saveInProgress": false,
+      "paymentSuccessful": false
     },
     {
-      "id": "94e6c66c-b4f0-492f-8a26-55bdf189ac03",
+      "id": "1a703f5d-f3ba-4854-8c82-3a91b03efccd",
       "patientId": "ATHc400a",
-      "paymentDate": "Mon Jan 11 2021",
-      "paidAmount": 45,
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 500,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
+    },
+    {
+      "id": "ed20eb15-eb9b-48a5-b50d-e805b4d09e29",
+      "patientId": "ATHc400a",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 500,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": true
+    },
+    {
+      "id": "77e0c1d7-2f4c-495d-b037-9e97b992ed1d",
+      "patientId": "ATHc400a",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 765,
       "mode": "Card",
-      "saveInProgress": false
+      "saveInProgress": false,
+      "paymentSuccessful": true
+    },
+    {
+      "id": "d70dd82a-b6d5-41f7-bf43-f69b51c8da78",
+      "patientId": "ATH4c018",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 1490,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
+    },
+    {
+      "id": "0bcc5cbf-8c73-4c2e-9312-31b237ec3a1d",
+      "patientId": "ATH4cf93",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 1432,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
+    },
+    {
+      "id": "c68dc1bc-b59f-4e74-ba08-c9440312abd0",
+      "patientId": "ATH4cf93",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 0,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": true
+    },
+    {
+      "id": "92f73eaf-20d1-4852-942c-f593c4b89e8b",
+      "patientId": "ATH31832",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 400,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
+    },
+    {
+      "id": "45e158b7-a43c-446a-809a-b414ccdd22ef",
+      "patientId": "ATH31832",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 775,
+      "mode": "Card",
+      "saveInProgress": false,
+      "paymentSuccessful": true
+    },
+    {
+      "id": "33fd6c6d-8416-4795-8309-bedb2232090c",
+      "patientId": "ATH96acf",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 300,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
+    },
+    {
+      "id": "093aeb8a-f9ee-4b99-84de-2c8613cacad8",
+      "patientId": "ATH87544",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 450,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
+    },
+    {
+      "id": "fc675821-42b9-44ad-b241-ff571f8d3c99",
+      "patientId": "ATH87544",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 450,
+      "mode": "Card",
+      "saveInProgress": false,
+      "paymentSuccessful": true
+    },
+    {
+      "id": "e99b5d8f-9c27-4031-a41a-36560f0659d6",
+      "patientId": "ATH87544",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 450,
+      "mode": "Card",
+      "saveInProgress": false,
+      "paymentSuccessful": true
+    },
+    {
+      "id": "fca9c4b1-d3ec-4845-ab65-aa4f76cdfbc3",
+      "patientId": "ATH5177b",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 1000,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
+    },
+    {
+      "id": "b6201d50-2fff-436b-992f-43c20ec0eeca",
+      "patientId": "ATH38492",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 250,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
+    },
+    {
+      "id": "95694628-b602-42a2-bc65-ec91ad663d73",
+      "patientId": "ATH38492",
+      "paymentDate": "Tue Jan 12 2021",
+      "paidAmount": 250,
+      "mode": "Cash",
+      "saveInProgress": false,
+      "paymentSuccessful": false
     }
   ],
   "billing_transactions": []

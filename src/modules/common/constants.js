@@ -11,20 +11,20 @@ export const COUNTRY_INDIA = 'India';
 export const AGE_TYPE_MONTHS="Months";
 export const AGE_TYPE_YEARS="Years";
 
-export const BILL_STATUS = [
-    {
-        value: 'Fully Paid',
-        id: 'fullyPaid'
+export const BILL_STATUS = {
+    NOT_YET_STARTED: {
+        value: 'Not Yet Started',
+        id: 'notYetStarted'
     },
-    {
+    DUE_BILLED: {
         value: 'Due Billed',
         id: 'dueBilled'
     },
-    {
-        value: 'Not Yet Started',
-        id: 'notYetStarted'
+    FULLY_PAID: {
+        value: 'Fully Paid',
+        id: 'fullyPaid'
     }
-];
+};
 
 export const CASH_PAYMENT = 'Cash';
 export const CARD_PAYMENT = 'Card';
