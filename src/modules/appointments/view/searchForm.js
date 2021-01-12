@@ -55,6 +55,8 @@ function SearchForm({ classes, onSearch }) {
                             label="From Date"
                             views={["year", "month", "date"]}
                             value={startDate}
+                            maxDate={endDate || undefined}
+                            initialFocusedDate={endDate || undefined}
                             onChange={date => setStartDate(date.getTime())}
                         />
                     </FormControl>
@@ -68,6 +70,8 @@ function SearchForm({ classes, onSearch }) {
                             label="End Date"
                             views={["year", "month", "date"]}
                             value={endDate}
+                            minDate={startDate || undefined}
+                            initialFocusedDate={startDate || undefined}
                             onChange={date => setEndDate(date.getTime())}
                         />
                     </FormControl>

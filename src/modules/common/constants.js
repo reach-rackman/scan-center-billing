@@ -6,6 +6,9 @@ export const SALUTATION_MR = 'Mr.';
 export const SALUTATION_MRS = 'Mrs.';
 export const SALUTATION_MISS = 'Ms.';
 
+export const GENDER_MALE = 'Male';
+export const GENDER_FEMALE = 'Female';
+
 export const EMPTY = '';
 export const COUNTRY_INDIA = 'India';
 export const AGE_TYPE_MONTHS="Months";

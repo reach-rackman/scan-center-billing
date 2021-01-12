@@ -133,6 +133,7 @@ function PatientForm({ classes, patientDetails }) {
                             value={patientDetails.salutation}
                             onChange={e => handleOnChange('salutation', e.target.value)}
                         >
+                            <MenuItem value={constants.EMPTY}></MenuItem>
                             <MenuItem value={constants.SALUTATION_MR}>{constants.SALUTATION_MR}</MenuItem>
                             <MenuItem value={constants.SALUTATION_MRS}>{constants.SALUTATION_MRS}</MenuItem>
                             <MenuItem value={constants.SALUTATION_MISS}>{constants.SALUTATION_MISS}</MenuItem>
@@ -158,8 +159,16 @@ function PatientForm({ classes, patientDetails }) {
                             onChange={e => handleOnChange('gender', e.target.value)}
                             className={classes.genderRadio}
                         >
-                            <FormControlLabel value="Male" control={<Radio color="primary" />} label="Male" />
-                            <FormControlLabel value="Female" control={<Radio color="primary" />} label="Female" />
+                            <FormControlLabel
+                                value={constants.GENDER_MALE}
+                                control={<Radio color="primary" />}
+                                label={constants.GENDER_MALE}
+                            />
+                            <FormControlLabel
+                                value={constants.GENDER_FEMALE}
+                                control={<Radio color="primary" />}
+                                label={constants.GENDER_FEMALE}
+                            />
                         </RadioGroup>
                         {formFieldsInValid.gender && (
                             <ErrorMsg fieldName="Gender" className={classes.addLeft} />

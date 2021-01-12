@@ -7,7 +7,7 @@ import PatientService from '../services/PatientService';
 import { MedicalBilling } from '../../common/models/MedicalBillingMaster';
 
 export const initialState = {
-    salutation: constants.SALUTATION_MR,
+    salutation: '',
     patientName: '',
     ageType: constants.AGE_TYPE_YEARS,
     address: {
@@ -93,6 +93,18 @@ const PatientDetails = types.model('PatientDetails', {
             } else {
                 data['age'] = diffInYears;
                 data['ageType'] = constants.AGE_TYPE_YEARS;
+            }
+        } else if(fieldName === 'salutation') {
+            if (value === constants.SALUTATION_MR) {
+                data['gender'] = constants.GENDER_MALE;
+            } else {
+                data['gender'] = constants.GENDER_FEMALE;
+            }
+        } else if (fieldName === 'gender') {
+            if (value === constants.GENDER_FEMALE) {
+                data['salutation'] = constants.SALUTATION_MISS;
+            } else {
+                data['salutation'] = constants.SALUTATION_MR;
             }
         }
         applySnapshot(self, data);
