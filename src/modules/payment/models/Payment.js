@@ -25,7 +25,7 @@ const Payment = types.model('Payment', {
         payload.id = uuid();
         payload.patientId = patientId;
         payload.paymentDate = new Date().toDateString();
-        new PaymentsService().makePayment(payload).then(response => {
+        new PaymentsService().makePayment(payload).then(() => {
             applySnapshot(self, { ...self, saveInProgress: false, paymentSuccessful: true });
         });
     }

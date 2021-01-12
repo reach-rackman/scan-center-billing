@@ -36,7 +36,7 @@ function SearchResultsTable({ classes, appointments }) {
                         <TableCell>{`${patient.salutation} ${patient.patientName}`}</TableCell>
                         <TableCell>{patient.age}-{patient.gender}</TableCell>
                         <TableCell>{new Date(patient.appointmentDate).toDateString()}</TableCell>
-                        <TableCell>{patient.totalAmount}</TableCell>
+                        <TableCell>{patient.totalAmount - patient.amountPaid}</TableCell>
                         <TableCell>
                             {patient.paymentStatus === constants.BILL_STATUS.FULLY_PAID.id && (
                                 <Typography>{constants.BILL_STATUS.FULLY_PAID.value}</Typography>

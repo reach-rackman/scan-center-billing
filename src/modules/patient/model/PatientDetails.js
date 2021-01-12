@@ -51,6 +51,7 @@ const PatientDetails = types.model('PatientDetails', {
     selectedScans: types.optional(types.array(MedicalBilling), []),
     totalAmount: types.optional(types.number, 0),
     totalDiscount: types.optional(types.number, 0),
+    amountPaid: types.optional(types.number, 0),
     updatePending: types.optional(types.boolean, false),
     updateError: types.optional(types.boolean, false),
     updateComplete: types.optional(types.boolean, false)
@@ -132,9 +133,9 @@ const PatientDetails = types.model('PatientDetails', {
         selectedScans.push(scanItem);
         this.set({...self, selectedScans});
     },
-    updatePaymentStatus(patientId, status) {
+    updatePaymentStatus(patientId, status, amountPaid) {
         const patientService = new PatientService();
-        patientService.updatePaymentStatus(patientId, { paymentStatus: status });
+        patientService.updatePaymentStatus(patientId, { paymentStatus: status, amountPaid });
     },
     update() {
         const payload = {...self};

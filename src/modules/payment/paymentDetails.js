@@ -85,17 +85,17 @@ function PaymentDetails({ classes, payment, payments, patient, patientDetails })
     }, [payment.paymentSuccessful]);
     
     useEffect(() => {
-        if (payment.paymentSuccessful && payments.items.length) {
+        if (payment.paymentSuccessful && payments.paymentsFetched) {
             if (payments.amountPaid && patient.totalAmount) {
                 if (payments.amountPaid === patient.totalAmount) {
-                    patientDetails.updatePaymentStatus(patient.id, constants.BILL_STATUS.FULLY_PAID.id);
+                    patientDetails.updatePaymentStatus(patient.id, constants.BILL_STATUS.FULLY_PAID.id, payments.amountPaid);
                     history.push('/patients')
                 } else {
-                    patientDetails.updatePaymentStatus(patient.id, constants.BILL_STATUS.DUE_BILLED.id);
+                    patientDetails.updatePaymentStatus(patient.id, constants.BILL_STATUS.DUE_BILLED.id, payments.amountPaid);
                 }
             }
         }
-    }, [payment.paymentSuccessful, payments.items]);
+    }, [payment.paymentSuccessful, payments.paymentsFetched, payments.items]);
 
     const handlePayment = () => {
         payment.set({paidAmount: parseInt(payableAmt)});

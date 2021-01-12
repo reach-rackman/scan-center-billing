@@ -92,6 +92,11 @@ const styles = () => ({
     },
     minimalSize: {
         minWidth: 30
+    },
+    actionsWrapper: {
+        width: '100%',
+        textAlign: 'center',
+        marginTop: 10
     }
 });
 
@@ -316,12 +321,15 @@ function PatientForm({ classes, patientDetails }) {
                     </FormControl>
                 </div>
                 <MedicalScanDetails showError={formFieldsInValid.scanList} />
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={handleSave}
-                    disabled={patientDetails.updatePending}
-                >Save</Button>
+                <div className={classes.actionsWrapper}>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        size="large"
+                        onClick={handleSave}
+                        disabled={patientDetails.updatePending}
+                    >Save / Submit</Button>
+                </div>
             </form>
         </MuiPickersUtilsProvider>
     )
