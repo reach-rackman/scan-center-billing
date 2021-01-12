@@ -15,6 +15,7 @@ import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import LockIcon from '@material-ui/icons/Lock';
 import { inject, observer } from "mobx-react";
 import * as constants from '../common/constants';
+import ErrorMsg from '../common/ErrorMsg';
 
 const styles = () => ({
     wrapper: {
@@ -31,6 +32,8 @@ const styles = () => ({
     formControl: {
         display: 'flex',
         flexDirection: 'row',
+        margin: '3px 0',
+        paddingBottom: 20,
         '& .fieldName': {
             minWidth: 125,
             maxWidth: 125,
@@ -64,6 +67,7 @@ function PaymentDetails({ classes, payment, payments, patient, patientDetails })
     const [isFinal, setFinal] = useState(false);
     const [balanceAmt, setBalanceAmt] = useState(0);
     const [payableAmt, setPayableAmt] = useState(0);
+    const [payableError, setPayableError] = useState();
 
     useEffect(() => {
         if (patient.id) {
@@ -98,6 +102,11 @@ function PaymentDetails({ classes, payment, payments, patient, patientDetails })
         payment.makePayment(patient.id);
     }
 
+    const handlePayable = (value) => {
+        setPayableAmt(value)
+        setPayableError(value < (balanceAmt * 20/100) || value > balanceAmt);
+    }
+
     return (
         <div className={classes.wrapper}>
             <form name="paymentDetailsForm" className={classes.form}>
@@ -108,13 +117,17 @@ function PaymentDetails({ classes, payment, payments, patient, patientDetails })
                         type="number"
                         inputProps={{
                             size: 10,
-                            min: 50,
-                            max: balanceAmt
+                            min: Math.round(balanceAmt*20/100),
+                            max: balanceAmt,
+                            step: 1
                         }}
                         disabled={isFinal}
                         value={payableAmt}
-                        onChange={e => setPayableAmt(e.target.value)}
+                        onChange={e => handlePayable(e.target.value)}
                     />
+                    {payableError && (
+                        <ErrorMsg msg="Min: 20%; Max: Total balance" />
+                    )}
                 </FormControl>
                 <FormControl className={classes.formControl}>
                     <FormLabel className="fieldName">Payment Mode</FormLabel>
@@ -181,7 +194,7 @@ function PaymentDetails({ classes, payment, payments, patient, patientDetails })
                 <Button
                     variant="outlined"
                     color="primary"
-                    disabled={payment.saveInProgress}
+                    disabled={payment.saveInProgress || payableError}
                     onClick={handlePayment}
                 >Save</Button>
             </form>

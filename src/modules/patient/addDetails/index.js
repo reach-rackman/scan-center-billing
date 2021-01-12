@@ -1,6 +1,5 @@
 import { withStyles } from '@material-ui/core';
 import PageHeader from '../../common/PageHeader';
-import MedicalScanDetails from './medicalScanDetails';
 import PatientForm from './patientForm';
 
 const styles = () => ({
@@ -14,7 +13,6 @@ function AddPatientDetails({ classes }) {
         <div className={classes.wrapper}>
             <PageHeader pageName="Patient Details" />
             <PatientForm />
-            <MedicalScanDetails />
         </div>
     )
 }

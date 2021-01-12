@@ -10,12 +10,14 @@ import {
     TableRow,
     TextField,
     Typography,
-    withStyles
+    withStyles,
+    IconButton
 } from "@material-ui/core";
 import { inject, observer } from 'mobx-react';
 import PageHeader from "../../common/PageHeader";
 import { Autocomplete } from '@material-ui/lab';
-import { useHistory } from 'react-router-dom';
+import ErrorMsg from '../../common/ErrorMsg';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = (theme) => ({
     wrapper: {
@@ -60,34 +62,26 @@ const styles = (theme) => ({
     tableCell: {
         color: theme.palette.secondary.main
     },
-    actionWrapper: {
+    errorMsgWrapper: {
         width: '100%',
         textAlign: 'center',
-        marginTop: 20
+        position: 'relative'
+    },
+    errorMsg: {
+        position: 'initial'
     }
 });
 
-function MedicalScanDetails({ classes, patientDetails, scanList }) {
-    const history = useHistory();
+function MedicalScanDetails({ classes, patientDetails, scanList, showError }) {
     const [selectedScan, setSelectedScan] = useState({});
     const [discount, setDiscount] = useState(0);
+    const [discountError, setDiscountError] = useState();
 
     useEffect(() => {
         if (scanList) {
             scanList.fetch();
         }
     }, [scanList]);
-
-    useEffect(() => {
-        if (patientDetails.updateComplete) {
-            history && history.push('/');
-            patientDetails.clear();
-        }
-    }, [patientDetails.updateComplete])
-
-    const handleSave = () => {
-        patientDetails.add();
-    };
 
     const handleScanItemSelection = (selectedScan) => {
         setSelectedScan(selectedScan);
@@ -106,6 +100,11 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
             scanItem.totalAmount = scanItem.scanAmount - scanItem.appliedDiscAmt;
         }
         patientDetails.addScanItem(scanItem);
+    }
+
+    const handleDiscount = (value) => {
+        setDiscount(value)
+        setDiscountError(value < 0 || value > (selectedScan.maxDiscAmt || selectedScan.maxDiscPrct));
     }
 
     return (
@@ -146,20 +145,29 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
                         value={discount}
                         label="Discount"
                         variant="outlined"
-                        onChange={e => setDiscount(parseInt(e.target.value))}
+                        onChange={e => handleDiscount(parseInt(e.target.value))}
                         inputProps={{
                             max: selectedScan.maxDiscAmt || selectedScan.maxDiscPrct || 0
                         }}
                     />
+                    {discountError && (
+                        <ErrorMsg msg={`Min:0 & Max: ${selectedScan.maxDiscAmt || selectedScan.maxDiscPrct} `} />
+                    )}
                 </FormControl>
                 <FormControl className={classes.formControl}>
                     <Button
                         variant="outlined"
                         color="primary"
+                        disabled={!selectedScan.medicalBilling || discountError}
                         onClick={handleScanAddition}
                     >Add</Button>
                 </FormControl>
             </form>
+            <div className={classes.errorMsgWrapper}>
+                {showError && (
+                    <ErrorMsg className={classes.errorMsg} fieldName="Atleast 1 scan" />
+                )}
+            </div>
             <Table className={classes.table}>
                 <TableHead className={classes.tableHead}>
                     <TableRow>
@@ -168,6 +176,7 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
                         <TableCell className={classes.tableCell}>Scan Amount</TableCell>
                         <TableCell className={classes.tableCell}>Discount</TableCell>
                         <TableCell className={classes.tableCell}>Total Amount</TableCell>
+                        <TableCell className={classes.tableCell}></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -178,6 +187,14 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
                             <TableCell>{scan.scanAmount} INR</TableCell>
                             <TableCell>{scan.appliedDiscAmt} INR</TableCell>
                             <TableCell>{scan.totalAmount}</TableCell>
+                            <TableCell>
+                                <IconButton onClick={() => patientDetails.removeScan(scan)}>
+                                    <DeleteIcon
+                                        color="primary"
+                                        fontSize="small"
+                                    />
+                                </IconButton>
+                            </TableCell>
                         </TableRow>
                     ))}
                     {patientDetails.selectedScans.length === 0 && (
@@ -187,14 +204,6 @@ function MedicalScanDetails({ classes, patientDetails, scanList }) {
                     )}
                 </TableBody>
             </Table>
-            <div className={classes.actionWrapper}>
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={handleSave}
-                    disabled={patientDetails.updatePending}
-                >Save</Button>
-            </div>
         </div>
     )
 }

@@ -54,7 +54,32 @@ const PatientDetails = types.model('PatientDetails', {
     updatePending: types.optional(types.boolean, false),
     updateError: types.optional(types.boolean, false),
     updateComplete: types.optional(types.boolean, false)
-}).actions((self) => ({
+}).views((self) => ({
+    formFieldValidations(validate) {
+        let result = {};
+        if (validate) {
+            result = {
+                name: !self.patientName,
+                gender: !self.gender,
+                dob: !self.dob,
+                appointment: !self.appointmentDate,
+                phonenumber: !self.phoneNumber,
+                street: !self.address?.street,
+                city: !self.address?.city,
+                state: !self.address?.state,
+                pincode: !self.address?.pincode,
+                country: !self.address?.country,
+                scanList: !self.selectedScans.length
+            };
+        }
+        return result;
+    },
+    isValid() {
+        const validationVals = Object.values(self.formFieldValidations(true));
+        debugger
+        return !validationVals.length || !validationVals.includes(true);
+    }
+})).actions((self) => ({
     onChange(fieldName, value) {
         const data = {...self};
         data[fieldName] = value;
@@ -95,10 +120,10 @@ const PatientDetails = types.model('PatientDetails', {
 
         const addPatientServ = new AddPatientService();
         addPatientServ.addPatient(payload)
-        .then((response) => {
+        .then(() => {
             this.set({ ...self, updatePending: false, updateComplete: true });
         })
-        .catch((error) => {
+        .catch(() => {
             this.set({ ...self, updateError: true, updatePending: false });
         });
     },
@@ -116,6 +141,10 @@ const PatientDetails = types.model('PatientDetails', {
         delete payload.updateComplete;
         delete payload.updateError;
         delete payload.updatePending;
+    },
+    removeScan(scanToRemove) {
+        const filteredScans = self.selectedScans.filter((scan) => scan.id !== scanToRemove.id);
+        self.set({selectedScans: filteredScans});
     }
 }));
 
