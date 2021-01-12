@@ -18,18 +18,16 @@ const Payments = types.model('Payments', {
         applySnapshot(self, {...self, ...data});
     },
     fetch(patientId) {
-        if (!self.items.length || self.filterId !== patientId) {
-            if (!self.fetchInProgress) {
-                this.set({ fetchInProgress: true, paymentsFetched: false });
-                new PaymentsService().fetchPayments(patientId).then((response) => {
-                    this.set({
-                        items: [...response.data],
-                        filterId: patientId,
-                        fetchInProgress: false,
-                        paymentsFetched: true
-                    });
+        if (!self.fetchInProgress) {
+            this.set({ fetchInProgress: true, paymentsFetched: false });
+            new PaymentsService().fetchPayments(patientId).then((response) => {
+                this.set({
+                    items: [...response.data],
+                    filterId: patientId,
+                    fetchInProgress: false,
+                    paymentsFetched: true
                 });
-            }
+            });
         }
     }
 }))

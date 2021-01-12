@@ -73,10 +73,15 @@ function PaymentDetails({ classes, payment, payments, patient, patientDetails })
         if (patient.id) {
             payments.fetch(patient.id);
         }
-        setFinal(payments.items.length >= 2);
-        setPayableAmt(patient.totalAmount - payments.amountPaid)
-        setBalanceAmt(patient.totalAmount - payments.amountPaid)
-    }, [payments.filterId, patient]);
+    }, [patient]);
+
+    useEffect(() => {
+        if (payments.paymentsFetched) {
+            setFinal(payments.items.length >= 2);
+            setPayableAmt(patient.totalAmount - payments.amountPaid)
+            setBalanceAmt(patient.totalAmount - payments.amountPaid)
+        }
+    }, [payments.paymentsFetched, patient]);
 
     useEffect(() => {
         if (payment.paymentSuccessful && patient.id) {
@@ -126,7 +131,7 @@ function PaymentDetails({ classes, payment, payments, patient, patientDetails })
                         onChange={e => handlePayable(e.target.value)}
                     />
                     {payableError && (
-                        <ErrorMsg msg="Min: 20%; Max: Total balance" />
+                        <ErrorMsg msg={`Min: 20% (${Math.round(balanceAmt*20/100)}); Max: ${balanceAmt}`} />
                     )}
                 </FormControl>
                 <FormControl className={classes.formControl}>
